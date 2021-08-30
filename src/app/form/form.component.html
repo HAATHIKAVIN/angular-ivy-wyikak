@@ -1,0 +1,100 @@
+<div class="container ;w3-container  w3-animate-zoom" style="background: lightblue  no-repeat fixed center;   border: 2px solid black;
+padding: 25px;
+background-repeat: no-repeat;
+background-size: auto;
+}">
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+<div *ngIf="alert" class="alert alert-warning" role="alert">
+<strong>Form Submitted Successfully!</strong> 
+<button (click)="closealert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+<span  aria-hidden="true">&times;</span>
+</button>
+</div>
+<br>
+    <h2 style="text-align : center;">Fill the form</h2>
+  <form #postForm = "ngForm" (ngSubmit)="oncreatepost(postForm.value)" >
+   <div class="form-group">
+    <label for="Empid">Empid</label>
+    <input 
+     type="text"
+     class="form-control"
+      id="Empid"
+      name="Empid"
+      required
+      ngModel
+      placeholder="Enter Empid"
+      #Empid = "ngModel"
+     >
+     <span class="help-block" *ngIf="!Empid.valid && Empid.touched" style="color : Red"> Enter your  Empid!</span>
+   </div>
+   <div class="form-group">
+   <label for="Empname">Empname</label>
+   <input 
+    type="text"
+    class="form-control"
+     id="Empname"
+     name="Empname"
+     required
+     ngModel
+     placeholder="Enter Empname"
+     #Empname = "ngModel"
+    ><span class="help-block" *ngIf="!Empname.valid && Empname.touched" style="color : Red" > Enter your  Empname!</span>
+  </div> 
+  <div class="form-group">
+  <label for="Empage">Empage</label>
+  <input 
+   type="text"
+   class="form-control"
+    id="Empage"
+    name="Empage"
+    required
+    ngModel
+    placeholder="Enter Empage"
+    #Empage = "ngModel"
+   ><span class="help-block" *ngIf="!Empage.valid && Empage.touched" style="color : Red" > Enter your  Empage!</span>
+   </div>
+   <div class="form-group" >
+    <label for="Empaddress"> Empaddress : </label>
+    <select class="form-control" [ngModel] = "defaultoption" id="Empaddress" name="Empaddress" >
+     <option
+     *ngFor="let Empaddress of Empaddresses "
+     [value]="Empaddress"
+     >
+       {{ Empaddress }}
+     </option>
+    </select>
+  </div>
+<div class="form-group">
+<label for="Emppincode">Emppincode</label>
+<input 
+ type="text"
+ class="form-control"
+  id="Emppincode"
+  name="Emppincode"
+  required
+  ngModel
+  placeholder="Enter Emppincode"
+  #Emppincode = "ngModel"
+ >
+ <span class="help-block" *ngIf="!Emppincode.valid && Emppincode.touched" style="color : Red" > Enter your  Emppincode!</span>
+</div>
+  <div class="form-group">
+  <label for="Comment">Comment</label>
+  <textarea 
+   type="text"
+   class="form-control"
+    id="Comment"
+    name="Comment"
+    required
+    ngModel
+    placeholder="Enter Comment"
+    #Comment = "ngModel"
+  ></textarea>
+  <span class="help-block" *ngIf="!Comment.valid && Comment.touched" style="color : Red" > Enter your  Comment!</span>
+</div>
+   <button class="btn btn-primary" type="submit"  [disabled]="!postForm.valid"  *ngIf="!submitted"
+    >Send Details 
+  </button>
+  
+  </form>
+

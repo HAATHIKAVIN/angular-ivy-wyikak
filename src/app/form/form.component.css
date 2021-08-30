@@ -1,0 +1,9 @@
+.container{
+  margin-top: 50px;
+}
+input.ng-invalid.ng-touched{
+  border: 1px solid rgb(26, 235, 19);
+}
+textarea.ng-invalid.ng-touched{
+  border: 1px solid rgb(235, 51, 19);
+}

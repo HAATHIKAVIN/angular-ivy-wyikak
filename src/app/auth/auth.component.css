@@ -1,0 +1,6 @@
+.container{
+  margin-top: 50px;
+}
+input.ng-invalid.ng-touched{
+  border: 1px solid rgb(226, 5, 5);
+}

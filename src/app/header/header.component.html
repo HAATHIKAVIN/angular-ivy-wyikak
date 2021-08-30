@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-default">
+<div class="container-fluid" >
+<div class = "navbar-header">
+  <a  class="navbar-brand" style="color : black">EmployeeDetails</a>
+</div>
+<div class = " collapse navbar-collapse">
+  
+<ul class="nav navbar-nav" *ngIf = "isAuthenticated">
+ <li routerLinkActive = "active" class="bg-secondary text-black"><a   routerLink = "/Form" style=" cursor : pointer" >Form</a> </li>
+ <li routerLinkActive = "active" class="bg-secondary text-black"><a  routerLink = "/Tables" style=" cursor : pointer"  > Tables</a></li>
+  <!-- <li routerLinkActive = "active"><a routerLink = 'update/:id' style=" cursor : pointer" > UpdateForm</a></li> -->
+</ul> 
+
+<ul class=" nav navbar-nav navbar-right">
+<li routerLinkActive = "active"*ngIf = "!isAuthenticated" ><a routerLink = "/auth" style=" cursor : pointer">Authentication</a> </li>
+<li routerLinkActive = "active" *ngIf = "isAuthenticated"><a style=" cursor : pointer" (click)="onlogout()" >Logout</a></li>
+</ul>
+</div>
+</div>
+
+</nav>
+<div [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
+<div class="footer">
+  <p>If any Query  <a *ngIf = "isAuthenticated" style=" cursor : pointer; color : Red" routerLink = "/contact" >Contact Us </a></p>
+</div>

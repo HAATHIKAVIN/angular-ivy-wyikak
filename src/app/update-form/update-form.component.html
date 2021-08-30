@@ -1,0 +1,86 @@
+<div class="container w3-container w3-center w3-animate-bottom" style="background: lightgreen  no-repeat fixed center;   border: 2px solid black;
+padding: 25px;
+background-repeat: no-repeat;
+background-size: auto;
+}">
+
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+<div *ngIf="alert" class="alert alert-warning" role="alert">
+<strong>Form Updated Successfully!</strong> 
+<button (click)="closealert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+<span  aria-hidden="true">&times;</span>
+</button>
+</div>
+
+    <h2 style="text-align : center;">Update Form</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+  <label >Empid</label>
+  <input 
+   type="text"
+   class="form-control"
+    placeholder="Enter Empid"
+    formControlName= "Empid"
+  >
+ </div>
+ <div class="form-group">
+ <label>Empname</label>
+ <input 
+  type="text"
+  class="form-control"
+   placeholder="Enter Empname"
+   formControlName= "Empname"
+  >
+</div> 
+<div class="form-group">
+<label>Empage</label>
+<input 
+ type="text"
+ class="form-control"
+  placeholder="Enter Empage"
+  formControlName= "Empage"
+>
+  </div>
+ <div class="form-group">
+ <label>Empaddress</label>
+ <input 
+  type="text"
+  class="form-control"
+   placeholder="Enter Empaddress"
+   formControlName= "Empaddress"
+ >
+  </div>
+ <!-- <div class="form-group" >
+  <label > Empaddress : </label>
+  <select class="form-control" >
+   <option
+   *ngFor="let Empaddress of Empaddresses ; let i= index"
+   [value]="Empaddress" formControlName= "Empaddress"
+   >
+     {{ Empaddress }}
+   </option>
+  </select>
+</div> -->
+<div class="form-group">
+<label>Emppincode</label>
+<input 
+type="text"
+class="form-control"
+placeholder="Enter Emppincode"
+formControlName= "Emppincode"
+>
+</div>
+<div class="form-group">
+<label >Comment</label>
+<textarea 
+ type="text"
+ class="form-control"
+ placeholder="Enter Comment"
+ formControlName= "Comment"
+></textarea>
+</div>
+ <button class="btn btn-primary" type="submit" 
+  >Update Details 
+</button>
+</form> 

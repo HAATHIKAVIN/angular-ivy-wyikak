@@ -1,0 +1,86 @@
+<h1 style="text-align : center;">Authentication Page</h1>
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-6 col-md-offset-3 "> 
+  <div class="alert alert-danger" *ngIf= "error">
+   {{ error }}
+  </div>
+
+  <div *ngIf = "isloading" style="text-align : center;">
+  <app-loading-spinners></app-loading-spinners>
+  </div>
+<form #authform ="ngForm" (ngSubmit)= "onSubmit(authform)" *ngIf = "!isloading"  >
+<div class="form-group">
+  <label for="email"> E-Mail</label>
+  <input type="email" id="email" class="form-control input-md" name="email" ngModel required email placeholder="Enter email"  #email = "ngModel"/>
+  <span class="help-block" *ngIf="!email.valid && email.touched"> Enter your Email Address!</span>
+</div>
+
+<div class="form-group">
+<label for="password"> Password </label>
+<input type="password" id="password" class="form-control input-md" name="password" ngModel required minlength="6" placeholder="Enter password"  #password = "ngModel"/>
+<span class="help-block" *ngIf="!password.valid && password.touched"> Enter your Password!</span>
+</div>
+<div class="form-group form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox"> Remember me
+  </label>
+</div>
+<div class="container;w3-container  w3-animate-zoom">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 "> 
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Terms & Conditions
+  </button>
+    </div>
+  </div>
+  
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        
+        <div class="modal-header">
+          <h1 class="modal-title">Terms & Conditions</h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        
+        <div class="modal-body">
+          <h3>Is a Terms and Conditions Agreement Required?</h3>
+          <p>A Terms and Conditions is not required and it's not mandatory by law. Unlike Privacy Policies, which are required by laws such as the GDPR, CalOPPA and many others, there's no law or regulation on Terms and Conditions.
+
+            However, having a Terms and Conditions gives you the right to terminate the access of abusive users or to terminate the access to users who do not follow your rules and guidelines, as well as other desirable business benefits.
+            
+            It's extremely important to have this agreement if you operate a SaaS app.
+            
+            Here are a few examples of how this agreement can help you:
+            
+            If users abuse your website or mobile app in any way, you can terminate their account. Your "Termination" clause can inform users that their accounts would be terminated if they abuse your service.
+            If users can post content on your website or mobile app (create content and share it on your platform), you can remove any content they created if it infringes copyright. Your Terms and Conditions will inform users that they can only create and/or share content they own rights to. Similarly, if users can register for an account and choose a username, you can inform users that they are not allowed to choose usernames that may infringe trademarks, i.e. usernames like Google, Facebook, and so on.
+            If you sell products or services, you could cancel specific orders if a product price is incorrect. Your Terms and Conditions can include a clause to inform users that certain orders, at your sole discretion, can be canceled if the products ordered have incorrect prices due to various errors.
+            And many more examples.</p>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+<br>
+<div>
+ <button class="btn btn-primary" type="submit" [disabled]="!authform.valid"> {{ isloginmode ? 'Login' : 'SignUp' }} </button>
+ |
+<button class="btn btn-success" type="button" (click)="onSwitchMode()">Switch to {{isloginmode ? 'SignUp' : 'Login'}}</button>
+</div> 
+</form>
+
+</div>
+</div>
+</div>

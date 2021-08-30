@@ -1,0 +1,65 @@
+<h2 style="text-align : center;">EmployeeTable</h2>
+<div class="container;w3-container w3-center w3-animate-top" >
+<div class="row">
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+<div *ngIf="alert" class="alert alert-warning" role="alert">
+<strong>Deleted Successfully!</strong> 
+<button (click)="closealert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+<span  aria-hidden="true">&times;</span>
+</button>
+</div>
+<br>
+   <button class="btn btn-success" (click)="onfetchposts()" type="button">Fetch Details</button>
+   |
+   <button class="btn btn-danger" (click)="onclearposts()" [disabled]="loadedposts.length < 1" type="button">Clear Details</button>
+</div>
+</div>
+</div>
+<hr>
+<div class="container;w3-container w3-animate-bottom">
+<div class="row">
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+  <input class="form-control" id="myInput" type="text" placeholder="Search.." [(ngModel)]="namesearch" >
+  <br>
+  <p class="text-info"  *ngIf = "loadedposts.length < 1"> No posts Available!</p>
+  <table class="table table-bordered" *ngIf = "loadedposts.length >=1" >
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Empid</th>
+      <th>Empname</th>
+      <th>Empage</th>
+      <th>Empaddress</th>
+      <th>Emppincode</th>
+      <th>Comment</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody id="myTable">
+  <tr *ngFor=" let post of loadedposts | filter : namesearch ; let i = index" >
+  <td scope = " row"> {{ i+1 }} </td> 
+  <td> {{ post.Empid  }} </td>
+  <td> {{ post.Empname}} </td>
+  <td> {{ post.Empage}} </td>
+  <td> {{ post.Empaddress}} </td>
+  <td> {{ post.Emppincode}} </td>
+  <td> {{ post.Comment }}  </td>
+  <td>
+    <a routerLink = "/update/{{post.id}}" style=" cursor : pointer"> <i (click)="oneditpost(post.id,i)" style=" cursor : pointer ; font-size : 20px; text-align : center"  class="fa fa-edit"></i></a> </td>
+    <td> 
+      <i (click)="ondeletepost(post.id)" style=" cursor : pointer ; font-size : 20px; text-align : center"  class="fa fa-trash"></i> </td>
+    </tr>
+  </tbody>
+</table>
+
+  <p *ngIf = "isfetching && !error" >loading...</p>
+  <div class="alert alert-danger" *ngIf = "error">
+    <h3> An Error Occured </h3>
+    <p> {{ error }} </p>
+    <div class="button btn btn-danger" (click)="onHandleError()" >Okay</div>
+  </div>
+</div>
+</div>
+
+</div>
